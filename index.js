@@ -1,8 +1,8 @@
 const app = require('./server');
 
-const db = require('./persist/mongodb');
+const db = require('./persist/mongo');
 
-
+const config = require('./config');
 
 
 db.configureHandlers(()=>{
@@ -10,3 +10,5 @@ db.configureHandlers(()=>{
         console.log("server is running on port 8080");
     });
 });
+
+db.connect(config.password);

@@ -22,10 +22,8 @@ app.put("/editReview",(res, req)=>{
 });
 
 //will need a way to get all reviews
-app.get("/getReviews", (res, req)={
+app.get("/getReviews", (res, req)=>{
     
 });
 
-module.exports = {
-    app
-}
+module.exports = app;
