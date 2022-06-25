@@ -52,18 +52,24 @@ body {
 .addReview {
     position: fixed;
     right: 0;
-    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 25%;
     width: 100%;
     background-color: bisque;
     height: 80px;
+}
+.addReview:hover{
+    cursor: pointer;
 }
 
 .editing{
     position: absolute;
     right:0;
     height: 100px;
-    width: 100px;
-    background-color: black;
+    width: auto;
+    background-color: white;
 }
 
 .updateButton{
@@ -80,8 +86,44 @@ body {
     justify-content: center;
     align-items: center;
 }
+.greenButton{
+    background-color: green;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.updateButton:hover{
+    cursor: pointer;
+}
+.deleteButton:hover{
+    cursor: pointer;
+}
+
 .buttonContainer{
     /* grid-row: 4/5; */
     
     height: 100%;
+}
+
+.exitButton{
+    position: absolute;
+    right: 0;
+    color:grey;
+}
+.exitButton:hover{
+    cursor: pointer;
+}
+.submitButton{
+    background-color: green;
+    color:white;
+    position: absolute;
+    bottom: 0;
+    padding:3px;
+}
+.submitButton:hover{
+    cursor: pointer;
+}
+.reviewBox{
+    /* height: 100%; */
 }

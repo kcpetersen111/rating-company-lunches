@@ -10,28 +10,57 @@
 <body>
     <div id="app" v-cloak>
 
-        <div class="header">
-            <!-- add a way to filter reviews -->
-            <div>{{companies}}</div>
-            <div class="addReview">Add review</div>
+        <div >
+
+            <div class="header">
+                <!-- add a way to filter reviews -->
+                <div>{{companies}}</div>
+                <div class="addReview" @click="addReview()">Add review</div>
+                
+            </div>
             
-        </div>
-        
-        <div>
-            <div class="card" v-for="(review, index) in reviews">
-                <div class="rating">rating {{review.rating}}/10</div>
-                
-                <div class="subcard">
-                    <div class="company">company: {{review.companyName}}</div>
-                    <div class="review">review: {{review.review}}</div>
-                </div>
-                <div class="buttonContainer">
-                    <div class="updateButton">update</div>
-                    <div class="deleteButton">delete</div>
-                </div>
-                
-                <div class="editing" v-if="currentlyEditing == index">
+            <div>
+                <div class="card" v-for="(review, index) in reviews">
+                    <div class="rating">rating:
+                        <span v-if="currentlyEditing != index">{{review.rating}}</span>
+                        <input type="number" v-model="tempRating" v-if="currentlyEditing == index" value="Rating">
+                    /10</div>
                     
+                    <div class="subcard">
+                        <div class="company">company:
+                            <span v-if="currentlyEditing != index">{{review.companyName}}</span>
+                            <input v-model="tempCompany" v-if="currentlyEditing == index" value="Company Name">
+                        </div>
+
+                        <div class="review">review:
+                            <span v-if="currentlyEditing != index">{{review.review}}</span>
+                            <input v-model="tempReview" v-if="currentlyEditing == index" class="reviewBox" value="Review">
+                        </div>
+                    </div>
+                    <div class="buttonContainer">
+                        <div class="updateButton"
+                            @click="updateButtonClick(index)"
+                            v-if="currentlyEditing != index">Update</div>
+
+                        <div class="deleteButton" 
+                            @click="deleteButtonClick(index)" 
+                            v-if="currentlyEditing != index">Delete</div>
+
+                        <div class="greenButton" 
+                            @click="submitButton(review)"
+                            v-if="currentlyEditing == index">Submit</div>
+                        <div class="deleteButton" 
+                            @click="cancelButton(index)"
+                            v-if="currentlyEditing == index">Cancel</div>
+                    </div>
+                    
+                    <div class="editing" v-if="currentlyEditing == index" v-show="false">
+                        <div class="exitButton" @click="currentlyEditing =-1">X</div>
+                        <input type="number" v-model="review.rating">
+                        <input v-model="review.companyName">
+                        <input v-model="review.review">
+                        <div class="submitButton">submit</div>
+                    </div>
                 </div>
             </div>
         </div>
