@@ -43,7 +43,10 @@
                     <div class="subcard">
                          <div class="company"><!-- Company: -->
                             <span v-if="currentlyEditing != index">{{review.companyName}}</span>
-                            <input v-model="tempCompany" v-if="currentlyEditing == index" placeholder="Company Name">
+                            <input v-model="tempCompany" v-if="currentlyEditing == index" placeholder="Company Name" list="CompanyName">
+                            <datalist id="CompanyName">
+                                <option v-for="comp in companies">{{comp}}</option>
+                            </datalist>
                         </div>
 
                          <div class="review"><!-- Review: -->

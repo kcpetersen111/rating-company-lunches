@@ -23,6 +23,12 @@ var app = new Vue({
     methods:{
       updateButtonClick: function(index){
         this.currentlyEditing = index;
+        
+        this.currentlyAdding=false;
+        this.addingRating = "";
+        this.addingReview= "";
+        this.addingCompany = "";
+
         console.log("update button press"+index);
       },
       deleteButtonClick: function(review){
@@ -43,6 +49,10 @@ var app = new Vue({
       },
       addReview: function(){
         this.currentlyAdding = true;
+        this.currentlyEditing = -1;
+        this.tempRating = "";
+        this.tempReview = "";
+        this.tempCompany = "";
       },
       attemptToPostToServer(){
         if(this.addingCompany == "" || this.addingRating=="" || this.addingReview=="" ||this.addingRating>10 ||this.addingRating<1 ||!this.companies.includes(this.addingCompany)){
@@ -80,6 +90,10 @@ var app = new Vue({
 
       submitButton: function(review){
         console.log("submit button click");
+
+        if(!this.companies.includes(this.tempCompany)){
+          return;
+        }
 
         if(this.tempReview != ""){
           review.review = this.tempReview;
