@@ -14,27 +14,41 @@
 
             <div class="header">
                 <!-- add a way to filter reviews -->
-                <div>{{companies}}</div>
-                <div class="addReview" @click="addReview()">Add review</div>
+                <div v-if="!currentlyAdding && false">{{companies}}</div>
+                <div v-if="currentlyAdding" class="currentlyAdding">
+                    <div>Company Name: <input type="text" v-model="addingCompany" placeholder="Name" list="CompanyName">
+                    <datalist id="CompanyName">
+                        <option v-for="comp in companies">{{comp}}</option>
+                    </datalist></div>
+                    <div>Rating: <input type="number" v-model="addingRating" placeholder="1"></div>
+                    <div>Review: <input type="text" v-model="addingReview" placeholder="Review of the lunch"></div>
+                    <!-- <div>Create New Review</div> -->
+                </div>
+                <div class="addReview" @click="addReview()" v-if="!currentlyAdding">Add review</div>
+                <div class="addReview Greenbackground" @click="attemptToPostToServer()" v-if="currentlyAdding">Add review</div>
                 
             </div>
+
+            
             
             <div>
                 <div class="card" v-for="(review, index) in reviews">
-                    <div class="rating">rating:
+                    <div class="rating" v-bind:class="{'Greenbackground': review.rating>7,
+                        'Yellowbackground':review.rating>3 && review.rating <= 7,
+                        'Redbackground':review.rating>0 && review.rating <= 3}"><!--Rating:-->
                         <span v-if="currentlyEditing != index">{{review.rating}}</span>
-                        <input type="number" v-model="tempRating" v-if="currentlyEditing == index" value="Rating">
+                        <input type="number" v-model="tempRating" v-if="currentlyEditing == index" placeholder="Rating">
                     /10</div>
                     
                     <div class="subcard">
-                        <div class="company">company:
+                         <div class="company"><!-- Company: -->
                             <span v-if="currentlyEditing != index">{{review.companyName}}</span>
-                            <input v-model="tempCompany" v-if="currentlyEditing == index" value="Company Name">
+                            <input v-model="tempCompany" v-if="currentlyEditing == index" placeholder="Company Name">
                         </div>
 
-                        <div class="review">review:
+                         <div class="review"><!-- Review: -->
                             <span v-if="currentlyEditing != index">{{review.review}}</span>
-                            <input v-model="tempReview" v-if="currentlyEditing == index" class="reviewBox" value="Review">
+                            <input v-model="tempReview" v-if="currentlyEditing == index" class="reviewBox" placeholder="Review">
                         </div>
                     </div>
                     <div class="buttonContainer">
@@ -43,7 +57,7 @@
                             v-if="currentlyEditing != index">Update</div>
 
                         <div class="deleteButton" 
-                            @click="deleteButtonClick(index)" 
+                            @click="deleteButtonClick(review)" 
                             v-if="currentlyEditing != index">Delete</div>
 
                         <div class="greenButton" 

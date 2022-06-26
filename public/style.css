@@ -17,20 +17,29 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     background-color: azure;
+    border-bottom: 5px solid gainsboro;
 }
 
 .rating{
     grid-column: 1/2 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    width: 100%;
+
 }
 
 .subcard{
     grid-column: 2/4;
     display: grid;
     grid-template-rows: repeat(4, 1fr);
+    padding: 1rem 1rem;
 }
 
 .company{
     grid-row: 1/2;
+    font-size: larger;
 }
 
 .review{
@@ -47,6 +56,8 @@ body {
     width: 100%;
     background-color: brown;
     display: flex;
+    color:aliceblue;
+    align-items: center;
 }
 
 .addReview {
@@ -59,6 +70,7 @@ body {
     width: 100%;
     background-color: bisque;
     height: 80px;
+    color:black;
 }
 .addReview:hover{
     cursor: pointer;
@@ -93,6 +105,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+.greenButton:hover{
+    cursor: pointer;
+}
 .updateButton:hover{
     cursor: pointer;
 }
@@ -126,4 +141,22 @@ body {
 }
 .reviewBox{
     /* height: 100%; */
+}
+
+.currentlyAdding{
+    display: flex;
+    flex-direction: column;
+}
+.Greenbackground{
+    background-color: green;
+    color:aliceblue;
+}
+.Yellowbackground{
+    background-color: yellow;
+    color:black;
+}
+.Redbackground{
+    background-color: red;
+    color:aliceblue;
+
 }
