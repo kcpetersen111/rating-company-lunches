@@ -8,7 +8,7 @@ const url="http://localhost:8080";
 var app = new Vue({
     el:'#app',  
     data: {
-      test:"success",
+      // test:"success",
       companies:[],  
       reviews: [],
       currentlyEditing: -1,

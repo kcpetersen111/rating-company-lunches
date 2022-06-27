@@ -10,10 +10,12 @@ const fs = require('fs');
 const userName = process.env.MONGO_USERNAME;
 const password = readFile();
 // console.log(password);
+const port = process.env.PORT || 8080;
 
 
  
 module.exports = {
     userName,
     password,
+    port,
 }
