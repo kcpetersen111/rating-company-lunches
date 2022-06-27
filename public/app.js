@@ -29,11 +29,11 @@ var app = new Vue({
         this.addingReview= "";
         this.addingCompany = "";
 
-        console.log("update button press"+index);
+        // console.log("update button press"+index);
       },
       deleteButtonClick: function(review){
-        console.log("delete button press");
-        console.log(review);
+        // console.log("delete button press");
+        // console.log(review);
         const id = review._id;
 
         fetch(url+"/deleteReview/"+id, {
@@ -76,7 +76,7 @@ var app = new Vue({
           }
         }).then(response=>{
           response.json().then(data=>{
-            console.log(data)
+            // console.log(data)
             this.refreshReviews();
           });
         });
@@ -89,7 +89,7 @@ var app = new Vue({
       },
 
       submitButton: function(review){
-        console.log("submit button click");
+        // console.log("submit button click");
 
         if(!this.companies.includes(this.tempCompany)){
           return;
@@ -113,7 +113,7 @@ var app = new Vue({
           }
         }).then(response =>{
           response.json().then(data=>{
-            console.log(data)
+            // console.log(data)
             this.refreshReviews;
           });
         });
@@ -126,7 +126,7 @@ var app = new Vue({
       },
 
       cancelButton: function(index){
-        console.log("cancel button click");
+        // console.log("cancel button click");
 
         this.currentlyEditing = -1;
         this.tempRating = "";
@@ -138,7 +138,7 @@ var app = new Vue({
         fetch(url+"/getReviews").then(response =>{
           response.json().then(allReviews=>{
             this.reviews = allReviews;
-            console.log(allReviews);
+            // console.log(allReviews);
           });
         });
       }
@@ -152,7 +152,7 @@ var app = new Vue({
       fetch(url+"/getReview").then(response => {
         response.json().then(companies=>{
           this.companies = companies;
-          console.log(companies);
+          // console.log(companies);
         });
       });
 

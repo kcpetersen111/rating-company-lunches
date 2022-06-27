@@ -16,8 +16,8 @@ app.get("/getReview",(req,res)=>{
 app.post("/postReview",(req,res)=>{
 
     Review.create(req.body).then((review)=>{
-        console.log(req.body);
-        console.log(review);
+        // console.log(req.body);
+        // console.log(review);
         res.json(review);
     }).catch((err) =>{
         res.status(500).json(err);
