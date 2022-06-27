@@ -3,7 +3,7 @@
 
 // const { response } = require("../server");
 
-const url="http://localhost:8080";
+const url="https://ratelunches.herokuapp.com";
 
 var app = new Vue({
     el:'#app',  
