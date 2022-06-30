@@ -11,7 +11,7 @@ app.use(express.static(`${__dirname}/public`));
 
 //will need a way to get companies from the db and send it to the front end
 app.get("/getReview",(req,res)=>{
-    res.json(["Parks Pass","tcn","Stephen Wade","Zonos"]);
+    res.json(["Parks Pass","tcn","Stephen Wade","Zonos","SciTools","Vasion","SkyWest"]);
 
 });
 
